@@ -3,16 +3,13 @@
 public class PlayerMovement : MonoBehaviour {
 
     public float moveSpeed;
-    public GameObject deatParticles;
 
     private float _maxSpeed = 5f;
     private Vector3 _input;
-    private Vector3 _spawnPosition;
     private Rigidbody _rigidbody;
 
 	void Start () {
         _rigidbody = GetComponent<Rigidbody>();
-        _spawnPosition = transform.position;
 	}
 	
 	void Update () {
@@ -23,12 +20,4 @@ public class PlayerMovement : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.tag == "Enemy")
-        {
-            Instantiate(deatParticles, transform.position, Quaternion.identity);
-            transform.position = _spawnPosition;
-        }
-    }
 }
